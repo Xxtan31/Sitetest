@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 from flask import render_template
+from flask import Flask, send_from_directory
 import threading
 import time
 
@@ -23,8 +24,8 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
+    return send_from_directory('.', 'index.html')
+    
 # Key oluşturma endpointi
 @app.route('/create_key', methods=['POST'])
 def create_key():
