@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keys List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqCrKWQJokBbG8oB7OygVOoAwRogXpEukU6wApUl2GumKelMRuryH7J-L0PTNT39b540Qq_sJySzg3l1GhJG95jZQG58SxsiLUmpbQpXHmmn2YGRdhHGH3wZETLU0be5wx3m8Jd2Vb1dY/s1600/hareketli-yagmur4.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff; 
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff; 
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            color: white;
+        }
+        .id {
+            background-color: blue;
+            color: white;
+        }
+        .key {
+            background-color: #FFA500; /* Açık turuncu */
+            color: black;
+        }
+        .expiration-date {
+            background-color: #4CAF50; /* Yeşil */
+            color: white;
+        }
+        .usage-limit {
+            background-color: #FFD700; /* Koyu sarı */
+            color: black;
+        }
+        .uses {
+            background-color: #e97451;
+            color: white;
+        }
+        .hwid {
+            background-color: firebrick; /* Ateş kırmızısı */
+            color: white;
+        }
+        .id-header {
+            background-color: blue;
+        }
+        .expiration-header {
+            background-color: #4CAF50; /* Yeşil */
+        }
+        .key-header {
+            background-color: #FFA500; /* Açık turuncu */
+        }
+        .usage-limit-header {
+            background-color: #FFD700; /* Koyu sarı */
+        }
+        .uses-header {
+            background-color: #e97451;
+        }
+        .hwid-header {
+            background-color: firebrick; /* Ateş kırmızısı */
+        }
+    </style>
+    <script>
+        async function fetchKeys() {
+            const response = await fetch('http://127.0.0.1:5000/keys');
+            const keys = await response.json();
+            const keysContainer = document.getElementById('keysContainer');
+            keysContainer.innerHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="id-header">ID</th>
+                            <th class="expiration-header">Expiration Date</th>
+                            <th class="key-header">Key</th>
+                            <th class="usage-limit-header">Usage Limit</th>
+                            <th class="uses-header">Uses</th>
+                            <th class="hwid-header">HWID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${keys.map(key => `
+                            <tr>
+                                <td class="id">${key.id}</td>
+                                <td class="expiration-date">${key.expiration_date}</td>
+                                <td class="key">${key.key}</td>
+                                <td class="usage-limit">${key.usage_limit}</td>
+                                <td class="uses">${key.uses}</td>
+                                <td class="hwid">${key.hwid}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
 
+        setInterval(fetchKeys, 10000);
+        window.onload = fetchKeys;
+    </script>
+</head>
+<body>
+    <h1>Keys List</h1>
+    <div id="keysContainer"></div>
+</body>
+</html>
