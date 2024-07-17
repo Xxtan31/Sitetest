@@ -66,6 +66,22 @@ def use_key():
     db.session.commit()
     return jsonify({"message": "Key used successfully"}), 200
 
+@app.route('/keys', methods=['GET'])
+def get_keys():
+    keys = Key.query.all()
+    keys_list = [
+        {
+            "id": key.id,
+            "key": key.key,
+            "hwid": key.hwid,
+            "usage_limit": key.usage_limit,
+            "expiration_date": key.expiration_date,
+            "uses": key.uses,
+        }
+        for key in keys
+    ]
+    return jsonify(keys_list), 200
+
 def delete_expired_keys():
     with app.app_context():
         while True:
