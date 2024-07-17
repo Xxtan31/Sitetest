@@ -79,10 +79,6 @@
         async function fetchKeys() {
             const response = await fetch('http://127.0.0.1:5000/keys');
             const keys = await response.json();
-            displayKeys(keys);
-        }
-
-        function displayKeys(keys) {
             const keysContainer = document.getElementById('keysContainer');
             keysContainer.innerHTML = `
                 <table>
@@ -112,29 +108,12 @@
             `;
         }
 
-        async function searchKey(event) {
-            event.preventDefault();
-            const keyInput = document.getElementById('keyInput').value;
-            const response = await fetch(`http://127.0.0.1:5000/keys/${keyInput}`);
-            if (response.ok) {
-                const key = await response.json();
-                displayKeys([key]);
-            } else {
-                alert('Key not found');
-            }
-        }
-
         setInterval(fetchKeys, 10000);
         window.onload = fetchKeys;
     </script>
 </head>
 <body>
     <h1>Keys List</h1>
-    <form onsubmit="searchKey(event)">
-        <label for="keyInput">Enter Key: </label>
-        <input type="text" id="keyInput" required>
-        <button type="submit">Search</button>
-    </form>
     <div id="keysContainer"></div>
 </body>
 </html>
