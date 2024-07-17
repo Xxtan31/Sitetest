@@ -24,7 +24,7 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    return send_from_directory('.', 'index.html')
 
 # Key oluşturma endpointi
 @app.route('/create_key', methods=['POST'])
