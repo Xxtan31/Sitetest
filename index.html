@@ -9,15 +9,15 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqCrKWQJokBbG8oB7OygVOoAwRogXpEukU6wApUl2GumKelMRuryH7J-L0PTNT39b540Qq_sJySzg3l1GhJG95jZQG58SxsiLUmpbQpXHmmn2YGRdhHGH3wZETLU0be5wx3m8Jd2Vb1dY/s1600/hareketli-yagmur4.gif'); /* Arka plan resmi */
+            background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqCrKWQJokBbG8oB7OygVOoAwRogXpEukU6wApUl2GumKelMRuryH7J-L0PTNT39b540Qq_sJySzg3l1GhJG95jZQG58SxsiLUmpbQpXHmmn2YGRdhHGH3wZETLU0be5wx3m8Jd2Vb1dY/s1600/hareketli-yagmur4.gif');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            color: #ffffff; /* Genel yazı rengi */
+            color: #ffffff; 
         }
         h1 {
             text-align: center;
-            color: #ffffff; /* Başlık rengi - beyaz */
+            color: #ffffff; 
         }
         table {
             width: 100%;
@@ -31,6 +31,26 @@
         }
         th {
             background-color: #4CAF50;
+            color: white;
+        }
+        .id {
+            background-color: blue;
+            color: white;
+        }
+        .key {
+            background-color: orange;
+            color: black;
+        }
+        .usage-limit {
+            background-color: #FFD700; /* Koyu sarı */
+            color: black;
+        }
+        .uses {
+            background-color: #e97451;
+            color: white;
+        }
+        .hwid {
+            background-color: firebrick; /* Ateş kırmızısı */
             color: white;
         }
     </style>
@@ -54,12 +74,12 @@
                     <tbody>
                         ${keys.map(key => `
                             <tr>
-                                <td>${key.id}</td>
+                                <td class="id">${key.id}</td>
                                 <td>${key.expiration_date}</td>
-                                <td>${key.key}</td>
-                                <td>${key.usage_limit}</td>
-                                <td>${key.uses}</td>
-                                <td>${key.hwid}</td>
+                                <td class="key">${key.key}</td>
+                                <td class="usage-limit">${key.usage_limit}</td>
+                                <td class="uses">${key.uses}</td>
+                                <td class="hwid">${key.hwid}</td>
                             </tr>
                         `).join('')}
                     </tbody>
