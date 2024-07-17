@@ -1,5 +1,4 @@
-from flask import Flask, request, jsonify
-from flask import send_from_directory
+from flask import Flask, request, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 from flask_cors import CORS
@@ -7,7 +6,7 @@ import threading
 import time
 
 app = Flask(__name__)
-CORS(app)  # CORS desteği ekleniyor
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///keys.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -27,7 +26,6 @@ with app.app_context():
 def index():
     return send_from_directory('.', 'index.html')
 
-# Key oluşturma endpointi
 @app.route('/create_key', methods=['POST'])
 def create_key():
     data = request.json
@@ -40,9 +38,8 @@ def create_key():
     db.session.add(new_key)
     db.session.commit()
     
-    return jsonify({"message": "Key created successfully"}), 201
+    return jsonify({"message": key}), 201
 
-# Key kullanma endpointi (HWID ile ilişkilendirir)
 @app.route('/use_key', methods=['POST'])
 def use_key():
     data = request.json
@@ -56,7 +53,6 @@ def use_key():
     if key_entry.hwid and key_entry.hwid != hwid:
         return jsonify({"message": "HWID does not match"}), 403
     
-    # Süre kontrolü
     if datetime.now() > key_entry.expiration_date:
         db.session.delete(key_entry)
         db.session.commit()
@@ -70,52 +66,6 @@ def use_key():
     db.session.commit()
     return jsonify({"message": "Key used successfully"}), 200
 
-# HWID kontrolü
-@app.route('/check_hwid', methods=['POST'])
-def check_hwid():
-    data = request.json
-    hwid = data.get('hwid')
-    key_entry = Key.query.filter_by(hwid=hwid).first()
-
-    if not key_entry:
-        return jsonify({"message": "HWID not found"}), 404
-
-    if datetime.now() > key_entry.expiration_date:
-        db.session.delete(key_entry)
-        db.session.commit()
-        return jsonify({"message": "Key expired and deleted"}), 403
-
-    return jsonify({"message": "HWID valid", "key": key_entry.key}), 200
-
-# Tüm keyleri silme
-@app.route('/delete_all_keys', methods=['DELETE'])
-def delete_all_keys():
-    try:
-        num_deleted = db.session.query(Key).delete()
-        db.session.commit()
-        return jsonify({"message": f"{num_deleted} keys deleted successfully"}), 200
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"message": "Failed to delete keys", "error": str(e)}), 500
-        
-# Tüm keyleri alma
-@app.route('/keys', methods=['GET'])
-def get_keys():
-    keys = Key.query.all()
-    keys_list = [
-        {
-            "id": key.id,
-            "key": key.key,
-            "hwid": key.hwid,
-            "usage_limit": key.usage_limit,
-            "expiration_date": key.expiration_date,
-            "uses": key.uses,
-        }
-        for key in keys
-    ]
-    return jsonify(keys_list), 200
-
-# Geçersiz keyleri silme
 def delete_expired_keys():
     with app.app_context():
         while True:
@@ -124,7 +74,7 @@ def delete_expired_keys():
             for key in expired_keys:
                 db.session.delete(key)
             db.session.commit()
-            time.sleep(60)  # Her dakika kontrol et
+            time.sleep(60)
 
 if __name__ == '__main__':
     threading.Thread(target=delete_expired_keys, daemon=True).start()
