@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
-from threading import Thread
+from flask_cors import CORS
+import threading
 import time
 
 app = Flask(__name__)
+CORS(app)  # CORS desteği ekleniyor
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///keys.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -17,12 +19,9 @@ class Key(db.Model):
     expiration_date = db.Column(db.DateTime)
     uses = db.Column(db.Integer, default=0)
 
-# Veritabanı ve tablo oluşturma
-@app.before_first_request
-def create_tables():
+with app.app_context():
     db.create_all()
 
-# Ana sayfa
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
@@ -127,5 +126,5 @@ def delete_expired_keys():
             time.sleep(60)  # Her dakika kontrol et
 
 if __name__ == '__main__':
-    Thread(target=delete_expired_keys, daemon=True).start()
+    threading.Thread(target=delete_expired_keys, daemon=True).start()
     app.run(debug=True)
