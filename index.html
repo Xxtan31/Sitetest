@@ -40,6 +40,10 @@
             background-color: orange;
             color: black;
         }
+        .expiration-date {
+            background-color: #4CAF50; /* Yeşil */
+            color: white;
+        }
         .usage-limit {
             background-color: #FFD700; /* Koyu sarı */
             color: black;
@@ -54,9 +58,6 @@
         }
         .id-header {
             background-color: blue;
-        }
-        .key-header {
-            background-color: orange;
         }
         .expiration-header {
             background-color: #4CAF50; /* Yeşil */
@@ -92,7 +93,7 @@
                         ${keys.map(key => `
                             <tr>
                                 <td class="id">${key.id}</td>
-                                <td>${key.expiration_date}</td>
+                                <td class="expiration-date">${key.expiration_date}</td>
                                 <td class="key">${key.key}</td>
                                 <td class="usage-limit">${key.usage_limit}</td>
                                 <td class="uses">${key.uses}</td>
