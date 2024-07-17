@@ -28,13 +28,17 @@
             padding: 12px;
             border: 1px solid #ddd;
             text-align: left;
+            color: #000; /* Hücre içi yazı rengi */
         }
         th {
             background-color: #4CAF50;
             color: white;
         }
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: rgba(255, 255, 255, 0.3); /* Çift satırların arka plan rengini biraz şeffaf yap */
+        }
+        tr:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.3); /* Tek satırların arka plan rengini biraz şeffaf yap */
         }
     </style>
     <script>
