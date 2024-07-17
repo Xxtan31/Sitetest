@@ -30,7 +30,6 @@
             text-align: left;
         }
         th {
-            background-color: #4CAF50;
             color: white;
         }
         .id {
@@ -53,6 +52,21 @@
             background-color: firebrick; /* Ateş kırmızısı */
             color: white;
         }
+        .id-header {
+            background-color: blue;
+        }
+        .key-header {
+            background-color: orange;
+        }
+        .usage-limit-header {
+            background-color: #FFD700; /* Koyu sarı */
+        }
+        .uses-header {
+            background-color: #e97451;
+        }
+        .hwid-header {
+            background-color: firebrick; /* Ateş kırmızısı */
+        }
     </style>
     <script>
         async function fetchKeys() {
@@ -63,12 +77,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th class="id-header">ID</th>
                             <th>Expiration Date</th>
-                            <th>Key</th>
-                            <th>Usage Limit</th>
-                            <th>Uses</th>
-                            <th>HWID</th>
+                            <th class="key-header">Key</th>
+                            <th class="usage-limit-header">Usage Limit</th>
+                            <th class="uses-header">Uses</th>
+                            <th class="hwid-header">HWID</th>
                         </tr>
                     </thead>
                     <tbody>
