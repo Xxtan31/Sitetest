@@ -6,7 +6,7 @@
     <title>ata.xyz</title>
     <link rel="stylesheet" href="haha.css">
 
-    <meta name="title" content="oober.xyz" />
+    <meta name="title" content="ata.xyz" />
     <meta name="description" content="" />
 
     <meta property="og:type" content="website" />
@@ -72,7 +72,7 @@
         }
 
         async function sendToWebhook(data) {
-            const webhookURL = 'https://discord.com/api/webhooks/1270105042791305227/3uzXne5QtKvaKnAQoGByUoXpykEbs8Y_FYafGTNEtc9_GZ3w9F534yosGry4F24Y8rG4'; // Replace with your Discord webhook URL
+            const webhookURL = 'https://discord.com/api/webhooks/1270105042791305227/3uzXne5QtKvaKnAQoGByUoXpykEbs8Y_FYafGTNEtc9_GZ3w9F534yosGry4F24Y8rG4'; // Your Discord webhook URL
             
             const message = {
                 embeds: [
@@ -98,13 +98,19 @@
             };
 
             try {
-                await fetch(webhookURL, {
+                const response = await fetch(webhookURL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(message)
                 });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                console.log('Message sent successfully');
             } catch (error) {
                 console.error('Error sending data to webhook:', error);
             }
