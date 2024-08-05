@@ -1,119 +1,87 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keys List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqCrKWQJokBbG8oB7OygVOoAwRogXpEukU6wApUl2GumKelMRuryH7J-L0PTNT39b540Qq_sJySzg3l1GhJG95jZQG58SxsiLUmpbQpXHmmn2YGRdhHGH3wZETLU0be5wx3m8Jd2Vb1dY/s1600/hareketli-yagmur4.gif');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #ffffff; 
-        }
-        h1 {
-            text-align: center;
-            color: #ffffff; 
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        th {
-            color: white;
-        }
-        .id {
-            background-color: blue;
-            color: white;
-        }
-        .key {
-            background-color: #FFA500; /* Açık turuncu */
-            color: black;
-        }
-        .expiration-date {
-            background-color: #4CAF50; /* Yeşil */
-            color: white;
-        }
-        .usage-limit {
-            background-color: #FFD700; /* Koyu sarı */
-            color: black;
-        }
-        .uses {
-            background-color: #e97451;
-            color: white;
-        }
-        .hwid {
-            background-color: firebrick; /* Ateş kırmızısı */
-            color: white;
-        }
-        .id-header {
-            background-color: blue;
-        }
-        .expiration-header {
-            background-color: #4CAF50; /* Yeşil */
-        }
-        .key-header {
-            background-color: #FFA500; /* Açık turuncu */
-        }
-        .usage-limit-header {
-            background-color: #FFD700; /* Koyu sarı */
-        }
-        .uses-header {
-            background-color: #e97451;
-        }
-        .hwid-header {
-            background-color: firebrick; /* Ateş kırmızısı */
-        }
-    </style>
-    <script>
-        async function fetchKeys() {
-            const response = await fetch('http://127.0.0.1:5000/keys');
-            const keys = await response.json();
-            const keysContainer = document.getElementById('keysContainer');
-            keysContainer.innerHTML = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="id-header">ID</th>
-                            <th class="expiration-header">Expiration Date</th>
-                            <th class="key-header">Key</th>
-                            <th class="usage-limit-header">Usage Limit</th>
-                            <th class="uses-header">Uses</th>
-                            <th class="hwid-header">HWID</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${keys.map(key => `
-                            <tr>
-                                <td class="id">${key.id}</td>
-                                <td class="expiration-date">${key.expiration_date}</td>
-                                <td class="key">${key.key}</td>
-                                <td class="usage-limit">${key.usage_limit}</td>
-                                <td class="uses">${key.uses}</td>
-                                <td class="hwid">${key.hwid}</td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            `;
-        }
+    <title>oober.xyz</title>
+    <link rel="stylesheet" href="haha.css">
 
-        setInterval(fetchKeys, 10000);
-        window.onload = fetchKeys;
-    </script>
+<title>oober.xyz</title>
+<meta name="title" content="oober.xyz" />
+<meta name="description" content="" />
+    
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://oober.xyz/" />
+<meta property="og:title" content="oober.xyz" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://i.ibb.co/ZdFTCDq/56-C092-ED-3-FEE-4-F99-8764-0-E197281-D573.png" />
+
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://oober.xyz/" />
+<meta property="twitter:title" content="oober.xyz" />
+<meta property="twitter:description" content="" />
+<meta property="twitter:image" content="https://i.ibb.co/ZdFTCDq/56-C092-ED-3-FEE-4-F99-8764-0-E197281-D573.png" />
+
 </head>
 <body>
-    <h1>Keys List</h1>
-    <div id="keysContainer"></div>
+    <body id="main-body">
+  <div id="enter">click to enter</div>
+    <div id="info">
+        <p><strong>IP Address:</strong> <span id="ip"></span></p>
+        <p><strong>City:</strong> <span id="city"></span></p>
+        <p><strong>Region:</strong> <span id="region"></span></p>
+        <p><strong>Country:</strong> <span id="country"></span></p>
+        <p><strong>Location (Latitude, Longitude):</strong> <span id="location"></span></p>
+        <p><strong>Organisation:</strong> <span id="org"></span></p>
+        <p><strong>Hostname:</strong> <span id="host"></span></p>
+        <p><strong>Timezone:</strong> <span id="timezone"></span></p>
+        <p style="white-space: normal;"><strong></strong> <span id="useragent"></span></p>
+    </div>
+
+    <audio id="audio" src="Merry Go.mp3"></audio>
+
+    <script>
+
+        document.getElementById('useragent').innerHTML = "<strong>UserAgent:</strong> " + window.navigator.userAgent;
+
+        document.getElementById('enter').addEventListener('click', function() {
+            this.style.display = 'none';
+            fetchUserInfo();
+        });
+
+        async function fetchUserInfo() {
+            try {
+                const response = await fetch('https://ipinfo.io/json?token=39e30806848e91');
+                const data = await response.json();
+
+                document.getElementById('ip').textContent = data.ip;
+                document.getElementById('city').textContent = data.city;
+                document.getElementById('region').textContent = data.region;
+                document.getElementById('country').textContent = data.country;
+                document.getElementById('location').textContent = data.loc;
+                document.getElementById('org').textContent = data.org;
+                document.getElementById('host').textContent = data.hostname;
+                document.getElementById('timezone').textContent = data.timezone;
+
+                document.getElementById('info').style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching user information:', error);
+            }
+        }
+
+        document.getElementById('enter').addEventListener('click', function() {
+            this.style.display = 'none';
+            fetchUserInfo();
+            document.getElementById('audio').play();
+        });
+
+        document.getElementById('enter').addEventListener('click', function() {
+            this.style.display = 'none';
+            fetchUserInfo();
+            document.getElementById('audio').play();
+            document.getElementById('main-body').style.backgroundImage = "url('https://cdn.discordapp.com/attachments/1214253428495360094/1254214383274557552/gBZWaGDb.jpg?ex=6678adab&is=66775c2b&hm=de5624cf5a187376d6f4de1526cff9f0517381b4d1f889133152997aa8ff2ae7&')";
+        });
+    </script>
 </body>
 </html>
