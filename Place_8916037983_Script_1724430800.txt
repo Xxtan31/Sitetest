@@ -1,0 +1,128 @@
+Name = GameAnalytics
+Class = ModuleScript
+Path = ReplicatedStorage.Modules.GameAnalytics
+
+GETIMPORT	0		var0 = game -- [REDUNDANT]
+LOADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buADK		2		var2 = "RunService" -- [REDUNDANT]
+NAMECALL	3		var0 = var0:GetService(var2)
+NAMECALL	5		var1 = var0:IsServer()
+JUMPIFNOT	7		if var1 then
+GETIMPORT	0			var2 = require -- [REDUNDANT]
+GETIMPORT	2			var4 = script
+GETT buABLEKS	4			var3 = var4["GameAnalytics"]
+CALL		6			var2 = var2(var3, var4) -- [REDUNDANT]
+RETURN		7			return var2, var3
+RETURN		7		end
+GETIMPORT	8		var2 = require -- [REDUNDANT]
+GETIMPORT	10		var4 = script
+GETTABLEKS	12		var3 = var4["GameAnalyticsClient"]
+CALL		14		var2 = var2(var3, var4) -- [REDUNDANT]
+RETURN		15		return var2, var3
